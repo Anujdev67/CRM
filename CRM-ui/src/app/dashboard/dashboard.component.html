@@ -1,0 +1,37 @@
+<div class="card">
+  <div class="card-header">
+      <h1>Dashboard</h1>
+  </div>
+  <div class="card-body">
+      <div class="mb-3">
+          <button class="btn btn-primary me-2" (click)="loadCustomers()">Load Customers</button>
+          <button class="btn btn-success" (click)="addCustomer()">Add Customer</button>
+      </div>
+      <div class="table-responsive">
+          <table class="table mt-3" *ngIf="customers.length">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let customer of customers">
+                      <td>{{ customer.name }}</td>
+                      <td>{{ customer.email }}</td>
+                      <td>{{ customer.phone }}</td>
+                      <td>
+                          <button class="btn btn-secondary me-2" (click)="editCustomer(customer.id)">Edit</button>
+                          <button class="btn btn-danger" (click)="deleteCustomer(customer.id)">Delete</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div *ngIf="!customers.length" class="alert alert-info">
+              No customers found. Click "Load Customers" to fetch data or "Add Customer" to create a new one.
+          </div>
+      </div>
+  </div>
+</div>
